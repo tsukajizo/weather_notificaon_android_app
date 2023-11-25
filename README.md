@@ -13,10 +13,12 @@
 
 - アーキテクチャ
     - MVVM
+
+- ライブラリ
     - Jetpack compose
     - navigation
     - room
-- 使用フレームワーク: [フレームワーク名]
+    - Retrofit
 - その他の重要な技術要素
 
 ## 貢献方法

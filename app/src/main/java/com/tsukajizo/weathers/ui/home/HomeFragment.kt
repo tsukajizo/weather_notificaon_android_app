@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false).apply {
             composeView.setContent {
                 MaterialTheme {
-                    MainContainer(onNavToSettings = {
+                    Home(onNavToSettings = {
                         findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
                     })
                 }
@@ -50,14 +50,5 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-}
-
-@Composable
-fun MainContainer(onNavToSettings: () -> Unit) {
-    Surface {
-        Button(onClick = onNavToSettings){
-            "settings"
-        }
     }
 }

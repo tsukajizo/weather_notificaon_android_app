@@ -30,7 +30,7 @@ class SettingsFragment : Fragment() {
        _binding = FragmentSettingsBinding.inflate(inflater, container, false).apply {
             composeView.setContent {
                 MaterialTheme {
-                    MainContainer()
+                    SettingsView()
                 }
             }
         }
@@ -45,12 +45,5 @@ class SettingsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-}
-
-@Composable
-fun MainContainer() {
-    Surface {
-        Text("Hello Compose")
     }
 }
