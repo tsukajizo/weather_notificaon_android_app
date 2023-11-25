@@ -4,11 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.tsukajizo.weathers.R
@@ -33,7 +29,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false).apply {
             composeView.setContent {
                 MaterialTheme {
-                    Home(onNavToSettings = {
+                    HomeView(onNavToSettings = {
                         findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
                     })
                 }
