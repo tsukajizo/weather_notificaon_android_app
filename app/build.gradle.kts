@@ -1,11 +1,21 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
 
+
+
+
 android {
     namespace = "com.tsukajizo.weathers"
     compileSdk = 33
+
+    val keystorePropertiesFile = rootProject.file("keystore.properties")
+    val keystoreProperties = Properties()
+    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 
     defaultConfig {
         applicationId = "com.tsukajizo.weathers"
@@ -20,10 +30,22 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+            buildConfigField(
+                "String",
+                "OPEN_WEATHER_API_KEY",
+                keystoreProperties["open_weather_api_key"] as String
+            )
         }
         debug {
-
+            buildConfigField(
+                "String",
+                "OPEN_WEATHER_API_KEY",
+                keystoreProperties["open_weather_api_key"] as String
+            )
         }
     }
     compileOptions {
@@ -34,6 +56,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+        buildConfig = true
         viewBinding = true
         compose = true
     }
