@@ -38,15 +38,15 @@ android {
             )
             buildConfigField(
                 "String",
-                "OPEN_WEATHER_API_KEY",
-                keystoreProperties["open_weather_api_key"] as String
+                "TOMORROW_IO_API_KEY",
+                keystoreProperties["tomorrow_io_api_key"] as String
             )
         }
         debug {
             buildConfigField(
                 "String",
-                "OPEN_WEATHER_API_KEY",
-                keystoreProperties["open_weather_api_key"] as String
+                "TOMORROW_IO_API_KEY",
+                keystoreProperties["tomorrow_io_api_key"] as String
             )
         }
     }
@@ -106,8 +106,15 @@ dependencies {
     // Optional - Integration with LiveData
     implementation("androidx.compose.runtime:runtime-livedata")
 
-  implementation("com.google.dagger:hilt-android:2.44")
-  kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
+
+    implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.12.0")
+
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
 }
 
 kapt {
