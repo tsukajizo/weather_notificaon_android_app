@@ -18,13 +18,20 @@ class HomeViewModel @Inject constructor(
     private val weatherRepository: WeatherRepository
 ) : ViewModel(){
 
+    val weather:MutableLiveData<WeatherForecast> by lazy {
+        MutableLiveData<WeatherForecast>()
+    }
+
 
     fun getWeather(){
         viewModelScope.launch {
-            val weather  = weatherRepository.getWeatherInfo(
-                80.0,
-                80.0,
+            val result  = weatherRepository.getWeatherInfo(
+                35.6894,
+                139.6917,
             )
+
+            weather.value =  result
+
             Log.d("test", weather.toString())
             
         }
